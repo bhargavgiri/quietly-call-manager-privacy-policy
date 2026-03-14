@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Quietly · Privacy & Trust Center</title>
+    <!-- Font & Icons (Font Awesome for clean icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 12px;
+            line-height: 1.5;
+            color: #1a2639;
+        }
+
+        /* main card - full width on mobile */
+        .privacy-card {
+            max-width: 100%;
+            width: 100%;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        /* header - compact for mobile */
+        .header-gradient {
+            background: linear-gradient(102deg, #0b1e33 0%, #1a2f40 100%);
+            padding: 1.5rem 1.2rem;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .brand-icon {
+            font-size: 1.8rem;
+            background: rgba(255,199,0,0.15);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            color: #FFC700;
+            border: 1.5px solid rgba(255,199,0,0.5);
+            flex-shrink: 0;
+        }
+
+        .headline {
+            flex: 1;
+        }
+
+        .headline h1 {
+            color: white;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .headline .sub {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            margin-top: 0.2rem;
+        }
+
+        .badge-date {
+            background: #FFC700;
+            color: #0b1e33;
+            font-weight: 600;
+            padding: 0.25rem 0.8rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        /* content - mobile padding */
+        .content {
+            padding: 1.2rem 1rem;
+        }
+
+        /* trust banner - mobile optimized */
+        .trust-banner {
+            background: #e8f0fe;
+            border-radius: 20px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            border-left: 5px solid #FFC700;
+        }
+
+        .trust-banner i {
+            font-size: 1.6rem;
+            color: #1e3a5f;
+            background: white;
+            border-radius: 50%;
+            padding: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .trust-banner p {
+            font-size: 0.95rem;
+            font-weight: 450;
+            color: #003153;
+        }
+
+        .trust-banner strong {
+            color: #003153;
+            background: #FFC700;
+            padding: 0.1rem 0.4rem;
+            border-radius: 16px;
+            font-size: 0.85rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 1.8rem 0 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 3px solid #FFC700;
+            padding-bottom: 0.4rem;
+            color: #0a1a2b;
+        }
+
+        h2 i {
+            color: #FFC700;
+            background: #0b1e3310;
+            padding: 0.4rem;
+            border-radius: 12px;
+            font-size: 1.2rem;
+        }
+
+        .highlight-local {
+            background: #fef7e0;
+            border-radius: 20px;
+            padding: 0.4rem 0.8rem;
+            font-weight: 550;
+            font-size: 0.9rem;
+            color: #2d3e50;
+            border: 1px dashed #FFC700;
+            display: inline-block;
+            margin: 0.4rem 0;
+        }
+
+        /* MOBILE FIRST - single column grid */
+        .permission-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin: 1.2rem 0;
+        }
+
+        .permission-card {
+            background: #fafcff;
+            border-radius: 20px;
+            padding: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid rgba(255,199,0,0.15);
+            width: 100%;
+        }
+
+        .permission-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .permission-icon {
+            font-size: 1.4rem;
+            background: #f7f0d6;
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e2f40;
+            border: 1.5px solid #FFC700;
+            flex-shrink: 0;
+        }
+
+        .permission-name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #121f2f;
+            line-height: 1.3;
+            word-break: break-word;
+        }
+
+        .permission-badge {
+            background: #FFC700;
+            color: #0b1e33;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 30px;
+            display: inline-block;
+            margin-left: 0.3rem;
+            white-space: nowrap;
+        }
+
+        .permission-why, .permission-usage {
+            color: #1e3a5f;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin: 0.5rem 0 0.2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .permission-why i, .permission-usage i {
+            color: #FFC700;
+            font-size: 0.8rem;
+        }
+
+        .permission-why-text, .permission-usage-text {
+            color: #2d4259;
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid #FFC700;
+        }
+
+        .permission-note {
+            font-size: 0.75rem;
+            color: #3f546a;
+            background: #f0f5fa;
+            padding: 0.4rem 0.6rem;
+            border-radius: 12px;
+            margin-top: 0.4rem;
+            border-left: 3px solid #FFC700;
+        }
+
+        /* list styles */
+        .list-icon {
+            list-style: none;
+        }
+
+        .list-icon li {
+            margin-bottom: 0.6rem;
+            display: flex;
+            gap: 0.6rem;
+            align-items: flex-start;
+            font-size: 0.9rem;
+        }
+
+        .list-icon li i {
+            color: #FFC700;
+            font-size: 1rem;
+            min-width: 1.4rem;
+            padding-top: 0.2rem;
+        }
+
+        /* contact section mobile */
+        .contact-modern {
+            background: linear-gradient(115deg, #0e263b, #132d42);
+            border-radius: 24px;
+            padding: 1.5rem 1.2rem;
+            color: white;
+            margin: 1.5rem 0;
+        }
+
+        .contact-modern h4 {
+            font-size: 1.4rem;
+            color: #FFC700;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        .contact-chip {
+            background: #ffffff15;
+            border-radius: 100px;
+            padding: 0.6rem 1.2rem;
+            font-size: 0.95rem;
+            border: 1px solid #ffffff30;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .contact-chip i {
+            color: #FFC700;
+            width: 20px;
+        }
+
+        .footer-note {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            background: #f4f7fb;
+            border-radius: 30px;
+            padding: 0.8rem 1rem;
+        }
+
+        .playstore-badge {
+            background: #d5e6fb;
+            border-radius: 20px;
+            padding: 0.8rem 1rem;
+            margin: 1.2rem 0 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            border: 1.5px solid #FFC700;
+            font-size: 0.9rem;
+        }
+
+        .playstore-badge i {
+            font-size: 1.8rem;
+            color: #1D7C42;
+            flex-shrink: 0;
+        }
+
+        /* small text */
+        .intro-text {
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        a {
+            color: #FFC700;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* remove any horizontal scroll */
+        img, svg {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="privacy-card">
+        <div class="header-gradient">
+            <div class="header-content">
+                <div class="brand-icon">
+                    <i class="fas fa-volume-off"></i>
+                </div>
+                <div class="headline">
+                    <h1>Quietly</h1>
+                    <div class="sub">
+                        <i class="fas fa-shield-alt"></i> Privacy first
+                        <span class="badge-date"><i class="far fa-calendar-alt"></i> Mar 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- trust banner -->
+            <div class="trust-banner">
+                <i class="fas fa-microchip"></i>
+                <p><strong>🔒 100% local</strong> — Your contacts, calls & messages stay on your device. Never uploaded.</p>
+            </div>
+
+            <p class="intro-text">We built Quietly so you can control calls without giving up privacy. Every detail explained.</p>
+
+            <!-- what we collect -->
+            <h2><i class="fas fa-database"></i> 1. What we collect</h2>
+            <ul class="list-icon">
+                <li><i class="fas fa-envelope"></i> <strong>Account:</strong> email & name (Firebase, encrypted)</li>
+                <li><i class="fas fa-phone-alt"></i> <strong>Call & SMS:</strong> <span class="highlight-local"><i class="fas fa-check-circle"></i> local only</span></li>
+                <li><i class="fas fa-address-book"></i> <strong>Contacts:</strong> only for groups — stored on your phone</li>
+                <li><i class="fas fa-microphone-slash"></i> <strong>Volume changes:</strong> temporary during active group</li>
+            </ul>
+
+            <!-- PERMISSIONS - MOBILE OPTIMIZED -->
+            <h2><i class="fas fa-shield-virus"></i> 2. Permissions</h2>
+            <p style="font-size:0.9rem; margin-bottom:0.5rem;">Every permission with <strong>WHY</strong> and <strong>HOW</strong> it's used:</p>
+            
+            <div class="permission-grid">
+                <!-- Permission 1 -->
+                <div class="permission-card">
+                    <div class="permission-header">
+                        <div class="permission-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="permission-name">READ_PHONE_STATE <span class="permission-badge">call state</span></div>
+                    </div>
+                    <div class="permission-why"><i class="fas fa-question-circle"></i> Why?</div>
+                    <div class="permission-why-text">Detect when phone is ringing</div>
+                    <div class="permission-usage"><i class="fas fa-tasks"></i> Usage?</div>
+                    <div class="permission-usage-text">Auto silent/vibrate based on your active group</div>
+                    <div class="permission-note"><i class="fas fa-lock"></i> No call recording, only state (ringing/idle)</div>
+                </div>
+
+                <!-- Permission 2 -->
+                <div class="permission-card">
+                    <div class="permission-header">
+                        <div class="permission-icon"><i class="fas fa-address-book"></i></div>
+                        <div class="permission-name">READ_CONTACTS <span class="permission-badge">groups</span></div>
+                    </div>
+                    <div class="permission-why"><i class="fas fa-question-circle"></i> Why?</div>
+                    <div class="permission-why-text">Select people for quiet groups</div>
+                    <div class="permission-usage"><i class="fas fa-tasks"></i> Usage?</div>
+                    <div class="permission-usage-text">When creating "Family" or "Work" groups</div>
+                    <div class="permission-note"><i class="fas fa-database"></i> Stays on your phone — never uploaded</div>
+                </div>
+
+                <!-- Permission 3 -->
+                <div class="permission-card">
+                    <div class="permission-header">
+                        <div class="permission-icon"><i class="fas fa-sms"></i></div>
+                        <div class="permission-name">SEND_SMS <span class="permission-badge">auto-reply</span></div>
+                    </div>
+                    <div class="permission-why"><i class="fas fa-question-circle"></i> Why?</div>
+                    <div class="permission-why-text">Send scheduled messages & auto-replies</div>
+                    <div class="permission-usage"><i class="fas fa-tasks"></i> Usage?</div>
+                    <div class="permission-usage-text">"In meeting, will call later" — you write it, we send it</div>
+                    <div class="permission-note"><i class="fas fa-pen"></i> Only sends messages you create</div>
+                </div>
+
+                <!-- Permission 4 -->
+                <div class="permission-card">
+                    <div class="permission-header">
+                        <div class="permission-icon"><i class="fas fa-volume-mute"></i></div>
+                        <div class="permission-name">MODIFY_AUDIO_SETTINGS</div>
+                    </div>
+                    <div class="permission-why"><i class="fas fa-question-circle"></i> Why?</div>
+                    <div class="permission-why-text">Silence phone during active groups</div>
+                    <div class="permission-usage"><i class="fas fa-tasks"></i> Usage?</div>
+                    <div class="permission-usage-text">Turns on silent/vibrate mode automatically</div>
+                    <div class="permission-note"><i class="fas fa-clock"></i> Restores settings when group ends</div>
+                </div>
+
+                <!-- Permission 5 -->
+                <div class="permission-card">
+                    <div class="permission-header">
+                        <div class="permission-icon"><i class="fas fa-clock"></i></div>
+                        <div class="permission-name">SCHEDULE_EXACT_ALARM</div>
+                    </div>
+                    <div class="permission-why"><i class="fas fa-question-circle"></i> Why?</div>
+                    <div class="permission-why-text">Send at exact time you choose</div>
+                    <div class="permission-usage"><i class="fas fa-tasks"></i> Usage?</div>
+                    <div class="permission-usage-text">9:00 AM message goes at 9:00 AM sharp</div>
+                    <div class="permission-note"><i class="fas fa-bell"></i> No delays in scheduled messages</div>
+                </div>
+
+                <!-- Permission 6 -->
+                <div class="permission-card">
+                    <div class="permission-header">
+                        <div class="permission-icon"><i class="fas fa-layer-group"></i></div>
+                        <div class="permission-name">SYSTEM_ALERT_WINDOW</div>
+                    </div>
+                    <div class="permission-why"><i class="fas fa-question-circle"></i> Why?</div>
+                    <div class="permission-why-text">Show small button during calls</div>
+                    <div class="permission-usage"><i class="fas fa-tasks"></i> Usage?</div>
+                    <div class="permission-usage-text">Quickly see active group or change settings</div>
+                    <div class="permission-note"><i class="fas fa-eye"></i> Only UI overlay — no ads</div>
+                </div>
+
+                <!-- Permission 7 -->
+                <div class="permission-card">
+                    <div class="permission-header">
+                        <div class="permission-icon"><i class="fas fa-phone-slash"></i></div>
+                        <div class="permission-name">BIND_SCREENING_SERVICE</div>
+                    </div>
+                    <div class="permission-why"><i class="fas fa-question-circle"></i> Why?</div>
+                    <div class="permission-why-text">Use Android's official call screening</div>
+                    <div class="permission-usage"><i class="fas fa-tasks"></i> Usage?</div>
+                    <div class="permission-usage-text">Identify saved numbers & apply group rules</div>
+                    <div class="permission-note"><i class="fas fa-android"></i> Official Google API — secure</div>
+                </div>
+
+                <!-- Permission 8 -->
+                <div class="permission-card">
+                    <div class="permission-header">
+                        <div class="permission-icon"><i class="fas fa-bell"></i></div>
+                        <div class="permission-name">POST_NOTIFICATIONS</div>
+                    </div>
+                    <div class="permission-why"><i class="fas fa-question-circle"></i> Why?</div>
+                    <div class="permission-why-text">Alert you about active groups</div>
+                    <div class="permission-usage"><i class="fas fa-tasks"></i> Usage?</div>
+                    <div class="permission-usage-text">"Family group active — silent mode ON"</div>
+                    <div class="permission-note"><i class="fas fa-info-circle"></i> Can disable in Settings</div>
+                </div>
+
+                <!-- Permission 9 -->
+                <div class="permission-card">
+                    <div class="permission-header">
+                        <div class="permission-icon"><i class="fas fa-wifi"></i></div>
+                        <div class="permission-name">INTERNET</div>
+                    </div>
+                    <div class="permission-why"><i class="fas fa-question-circle"></i> Why?</div>
+                    <div class="permission-why-text">Login, ads, premium purchases</div>
+                    <div class="permission-usage"><i class="fas fa-tasks"></i> Usage?</div>
+                    <div class="permission-usage-text">Firebase auth & AdMob (free version)</div>
+                    <div class="permission-note"><i class="fas fa-lock"></i> Call/message data never sent</div>
+                </div>
+
+                <!-- Permission 10 -->
+                <div class="permission-card">
+                    <div class="permission-header">
+                        <div class="permission-icon"><i class="fas fa-google-play"></i></div>
+                        <div class="permission-name">BILLING</div>
+                    </div>
+                    <div class="permission-why"><i class="fas fa-question-circle"></i> Why?</div>
+                    <div class="permission-why-text">Premium subscriptions</div>
+                    <div class="permission-usage"><i class="fas fa-tasks"></i> Usage?</div>
+                    <div class="permission-usage-text">Secure payments via Google Play</div>
+                    <div class="permission-note"><i class="fas fa-credit-card"></i> We never see payment details</div>
+                </div>
+
+                <!-- Permission 11 -->
+                <div class="permission-card">
+                    <div class="permission-header">
+                        <div class="permission-icon"><i class="fas fa-phone"></i></div>
+                        <div class="permission-name">ANSWER_PHONE_CALLS</div>
+                    </div>
+                    <div class="permission-why"><i class="fas fa-question-circle"></i> Why?</div>
+                    <div class="permission-why-text">Call screening integration</div>
+                    <div class="permission-usage"><i class="fas fa-tasks"></i> Usage?</div>
+                    <div class="permission-usage-text">Apply group rules to incoming calls</div>
+                    <div class="permission-note"><i class="fas fa-lock"></i> No call content recorded</div>
+                </div>
+
+                <!-- Permission 12 -->
+                <div class="permission-card">
+                    <div class="permission-header">
+                        <div class="permission-icon"><i class="fas fa-calendar-check"></i></div>
+                        <div class="permission-name">CALL_PHONE</div>
+                    </div>
+                    <div class="permission-why"><i class="fas fa-question-circle"></i> Why?</div>
+                    <div class="permission-why-text">Schedule call activation</div>
+                    <div class="permission-usage"><i class="fas fa-tasks"></i> Usage?</div>
+                    <div class="permission-usage-text">Activates group at your scheduled time</div>
+                    <div class="permission-note"><i class="fas fa-clock"></i> Only triggers when you schedule</div>
+                </div>
+
+                <!-- Permission 13 -->
+                <div class="permission-card">
+                    <div class="permission-header">
+                        <div class="permission-icon"><i class="fas fa-tasks"></i></div>
+                        <div class="permission-name">MANAGE_OWN_CALLS</div>
+                    </div>
+                    <div class="permission-why"><i class="fas fa-question-circle"></i> Why?</div>
+                    <div class="permission-why-text">Telecom system integration</div>
+                    <div class="permission-usage"><i class="fas fa-tasks"></i> Usage?</div>
+                    <div class="permission-usage-text">Works with call screening for smooth experience</div>
+                    <div class="permission-note"><i class="fas fa-android"></i> Required for call features</div>
+                </div>
+
+                <!-- Permission 14 -->
+                <div class="permission-card">
+                    <div class="permission-header">
+                        <div class="permission-icon"><i class="fas fa-list-ol"></i></div>
+                        <div class="permission-name">READ_PHONE_NUMBERS</div>
+                    </div>
+                    <div class="permission-why"><i class="fas fa-question-circle"></i> Why?</div>
+                    <div class="permission-why-text">Match incoming calls with groups</div>
+                    <div class="permission-usage"><i class="fas fa-tasks"></i> Usage?</div>
+                    <div class="permission-usage-text">Check if caller is in Family/Work group</div>
+                    <div class="permission-note"><i class="fas fa-lock"></i> Local check only</div>
+                </div>
+
+                <!-- Permission 15 - FIXED -->
+                <div class="permission-card">
+                    <div class="permission-header">
+                        <div class="permission-icon"><i class="fas fa-server"></i></div>
+                        <div class="permission-name">FOREGROUND_SERVICE_PHONE_CALL <span class="permission-badge">Android 14+</span></div>
+                    </div>
+                    <div class="permission-why"><i class="fas fa-question-circle"></i> Why?</div>
+                    <div class="permission-why-text">Keep call monitoring active in background</div>
+                    <div class="permission-usage"><i class="fas fa-tasks"></i> Usage?</div>
+                    <div class="permission-usage-text">Required for call screening on Android 14+</div>
+                    <div class="permission-note"><i class="fas fa-clock"></i> Auto-stops when you deactivate groups</div>
+                </div>
+
+                <!-- Permission 16 - FIXED -->
+                <div class="permission-card">
+                    <div class="permission-header">
+                        <div class="permission-icon"><i class="fas fa-power-off"></i></div>
+                        <div class="permission-name">RECEIVE_BOOT_COMPLETED</div>
+                    </div>
+                    <div class="permission-why"><i class="fas fa-question-circle"></i> Why?</div>
+                    <div class="permission-why-text">Restore schedules after phone restart</div>
+                    <div class="permission-usage"><i class="fas fa-tasks"></i> Usage?</div>
+                    <div class="permission-usage-text">Your scheduled messages work even after reboot</div>
+                    <div class="permission-note"><i class="fas fa-sync"></i> No data lost when phone restarts</div>
+                </div>
+
+                <!-- Permission 17 - FIXED -->
+                <div class="permission-card">
+                    <div class="permission-header">
+                        <div class="permission-icon"><i class="fas fa-battery-full"></i></div>
+                        <div class="permission-name">IGNORE_BATTERY_OPTIMIZATIONS</div>
+                    </div>
+                    <div class="permission-why"><i class="fas fa-question-circle"></i> Why?</div>
+                    <div class="permission-why-text">Keep app running reliably during active groups</div>
+                    <div class="permission-usage"><i class="fas fa-tasks"></i> Usage?</div>
+                    <div class="permission-usage-text">Prevents Android from stopping call screening</div>
+                    <div class="permission-note"><i class="fas fa-check"></i> Completely optional — you can disable</div>
+                </div>
+            </div>
+
+            <!-- Data usage -->
+            <h2><i class="fas fa-exchange-alt"></i> 3. Third‑party</h2>
+            <ul class="list-icon">
+                <li><i class="fas fa-check-circle" style="color:#2e7d32;"></i> <strong>No data selling</strong></li>
+                <li><i class="fas fa-fire"></i> Firebase: auth & crash reports</li>
+                <li><i class="fas fa-ad"></i> AdMob: ads (free version only)</li>
+                <li><i class="fas fa-credit-card"></i> Google Play Billing</li>
+            </ul>
+
+            <!-- Play Store badge -->
+            <div class="playstore-badge">
+                <i class="fab fa-google-play"></i>
+                <span><strong>Play Store compliant</strong> — follows all Google policies</span>
+            </div>
+
+            <!-- Storage -->
+            <h2><i class="fas fa-hdd"></i> 4. Storage</h2>
+            <ul class="list-icon">
+                <li><i class="fas fa-mobile-alt"></i> <strong>Local:</strong> contacts, groups (Room database)</li>
+                <li><i class="fas fa-cloud"></i> <strong>Cloud:</strong> only email & name (Firebase, encrypted)</li>
+            </ul>
+
+            <!-- Contact -->
+            <div class="contact-modern">
+                <h4><i class="fas fa-heart"></i> Questions?</h4>
+                <p>We reply within hours</p>
+                <div class="contact-methods">
+                    <span class="contact-chip"><i class="fas fa-envelope"></i> bhargavgiri.tech@gmail.com</span>
+                    <span class="contact-chip"><i class="fas fa-cog"></i> Settings > Support</span>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer-note">
+                <i class="fas fa-check-circle" style="color:#1e7e34;"></i> GDPR · CCPA compliant<br>
+                © 2026 Quietly · Silent by design
+            </div>
+        </div>
+    </div>
+</body>
+</html>
